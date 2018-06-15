@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import com.toshiaki.cursomc.domain.enuns.EstadoPagamento;
 
 @Entity
-@Inheritance(strategy= InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pagamento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
