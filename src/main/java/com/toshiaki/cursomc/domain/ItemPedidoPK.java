@@ -11,22 +11,21 @@ public class ItemPedidoPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne
+	@JoinColumn(name = "produto_Id")
+	private Produto produto;
 
 	@ManyToOne
-	@JoinColumn(name= "produto_Id")
-	private Produto produto;
-	
-	@ManyToOne
-	@JoinColumn(name= "pedido_Id")
+	@JoinColumn(name = "pedido_Id")
 	private Pedido pedido;
-	
-	public ItemPedidoPK () {
+
+	public ItemPedidoPK() {
 	}
-	
+
 	public ItemPedidoPK(Produto produto, Pedido pedido) {
 		super();
 		this.produto = produto;
-		this.pedido= pedido;
+		this.pedido = pedido;
 	}
 
 	public Produto getProduto() {
