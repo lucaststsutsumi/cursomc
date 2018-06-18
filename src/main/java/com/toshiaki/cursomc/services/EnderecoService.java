@@ -15,7 +15,7 @@ public class EnderecoService {
 	@Autowired
 	private EnderecoRepository repo;
 
-	public Endereco Buscar(Integer id) {
+	public Endereco find(Integer id) {
 		Optional<Endereco> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"O endereço com id " + id + "não foi encontrado em nossa base de dados"));
