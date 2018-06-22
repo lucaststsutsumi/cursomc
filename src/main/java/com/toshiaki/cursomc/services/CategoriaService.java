@@ -3,10 +3,12 @@ package com.toshiaki.cursomc.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.toshiaki.cursomc.domain.Categoria;
 import com.toshiaki.cursomc.repositories.CategoriaRepository;
+import com.toshiaki.cursomc.services.exceptions.DataIntegrityException;
 import com.toshiaki.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -29,5 +31,13 @@ public class CategoriaService {
 		find(categoria.getId());
 		Categoria obj = repo.save(categoria);
 		return obj;
+	}
+	
+	public void delete(Integer id) {
+		try{
+			repo.deleteById(id);	
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possivel excluir uma Categoria que possua produtos vinculados");
+		}
 	}
 }
