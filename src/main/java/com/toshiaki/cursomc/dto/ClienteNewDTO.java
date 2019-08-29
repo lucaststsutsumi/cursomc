@@ -2,27 +2,48 @@ package com.toshiaki.cursomc.dto;
 
 import java.io.Serializable;
 
-public class ClienteNewDTO implements Serializable{
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.toshiaki.cursomc.services.validation.ClienteInsert;
+
+@ClienteInsert
+public class ClienteNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@NotEmpty(message = "Campo obrigatório")
+	@Length(min = 5, max = 160, message = "Campo deve conter entre 5 e 160 caracteres")
 	private String nome;
+	@NotEmpty(message = "Campo obrigatório")
+	@Email(message = "Campo não possui e-mail válido")
 	private String email;
+	@NotEmpty(message = "Campo obrigatório")
 	private String cpfOuCnpj;
+
 	private Integer tipo;
-	
+
+	@NotEmpty(message = "Campo obrigatório")
 	private String logradouro;
+
+	@NotEmpty(message = "Campo obrigatório")
 	private String numero;
+
 	private String complemento;
 	private String bairro;
+
+	@NotEmpty(message = "Campo obrigatório")
 	private String cep;
-	
+
+	@NotEmpty(message = "Campo obrigatório")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
 
 	private Integer cidadeId;
-	
-	ClienteNewDTO() {	
+
+	ClienteNewDTO() {
 	}
 
 	public String getNome() {
@@ -128,6 +149,5 @@ public class ClienteNewDTO implements Serializable{
 	public void setCidadeId(Integer cidadeId) {
 		this.cidadeId = cidadeId;
 	}
-	
-	
+
 }
