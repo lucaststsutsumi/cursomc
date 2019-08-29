@@ -8,21 +8,23 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import com.toshiaki.cursomc.domain.Cliente;
+import com.toshiaki.cursomc.services.validation.ClienteUpdate;
 
-public class ClienteDTO implements Serializable{
+@ClienteUpdate
+public class ClienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
-	
-	@NotEmpty(message ="Campo obrigatório")
-	@Length(min = 5, max= 160, message="Campo deve conter entre 5 e 160 caracteres")
+
+	@NotEmpty(message = "Campo obrigatório")
+	@Length(min = 5, max = 160, message = "Campo deve conter entre 5 e 160 caracteres")
 	private String nome;
-	
-	@NotEmpty(message="Campo obrigatório")
-	@Email(message="Campo não possui e-mail válido")
+
+	@NotEmpty(message = "Campo obrigatório")
+	@Email(message = "Campo não possui e-mail válido")
 	private String email;
-	
-	public ClienteDTO(){
+
+	public ClienteDTO() {
 	}
 
 	public ClienteDTO(Cliente obj) {
@@ -55,6 +57,5 @@ public class ClienteDTO implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
 }
